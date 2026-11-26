@@ -1,7 +1,7 @@
 function GiveFeedback() {
   return (
     <div>
-      <h1>Give Feedback</h1>
+      <h1>Give Feedbacks</h1>
     </div>
   );
 }
