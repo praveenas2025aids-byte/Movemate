@@ -1,45 +1,52 @@
 
-import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import { customerregisterschema } from "../components/FormSchema/customerregisterschema";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 function CustomerRegister() {
 
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
-  const formsubmit = (e) => {
-    e.preventDefault();
-    console.log(name, phone, email, password);
-  }
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: zodResolver(customerregisterschema)
+    });
 
-  return (
-    <>
-      <h1>Customer Register</h1>
+    function onSubmit1(data) {
+        console.log(data);
+        alert("Customer registration successful");
+        navigate("/customerlogin");
+    }
 
-      <form onSubmit={formsubmit}>
+    return (
+        <>
+            <h1>Customer Registration</h1>
 
-        <label>Name:</label><br />
-        <input type="text" id="name" required placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} />
-        <br /><br />
+            <form onSubmit={handleSubmit(onSubmit1)}>
+                <label>Name:</label><br />
+                <input type="text" placeholder="Enter your name" {...register("name")} />
+                <p>{errors.name?.message}</p>
 
-        <label>Phone Number:</label><br />
-        <input type="tel" id="phone" required placeholder="Enter your phone number" value={phone} onChange={(e) => setPhone(e.target.value)} />
-        <br /><br />
+                <label>Phone Number:</label><br />
+                <input type="text" placeholder="Enter your phone number" {...register("phone")} />
+                <p>{errors.phone?.message}</p>
 
-        <label>Email:</label><br />
-        <input type="email" id="email" required placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <br /><br />
+                <label>Email:</label><br />
+                <input type="email" placeholder="Enter your email" {...register("email")} />
+                <p>{errors.email?.message}</p>
 
-        <label>Password:</label><br />
-        <input type="password" id="password" required placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <br /><br />
+                <label>Address:</label><br />
+                <textarea placeholder="Enter your address" {...register("address")}></textarea>
+                <p>{errors.address?.message}</p>
 
-        <button type="submit">Register</button>
+                <label>Password:</label><br />
+                <input type="password" placeholder="Create your password" {...register("password")} />
+                <p>{errors.password?.message}</p>
 
-      </form>
-    </>
-  );
+                <button type="submit">Register</button>
+            </form>
+        </>
+    );
 }
 
 export default CustomerRegister;

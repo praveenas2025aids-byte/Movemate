@@ -1,35 +1,34 @@
 
-import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import { loginschema } from "../components/FormSchema/loginschema";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 function DriverLogin() {
+    const navigate = useNavigate();
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: zodResolver(loginschema)
+    });
 
-  const [phone, setPhone] = useState('');
-  const [password, setPassword] = useState('');
+    function onSubmit1(data) {
+        console.log(data);
+        alert("Driver login successful");
+        navigate("/driverdashboard", { state: data });
+    }
 
-  const formsubmit = (e) => {
-    e.preventDefault();
-    console.log(phone, password);
-  }
-
-  return (
-    <>
-      <h1>Driver Login</h1>
-
-      <form onSubmit={formsubmit}>
-
-        <label>Phone Number:</label><br />
-        <input type="tel" id="phone" required placeholder="Enter your phone number" value={phone} onChange={(e) => setPhone(e.target.value)} />
-        <br /><br />
-
-        <label>Password:</label><br />
-        <input type="password" id="password" required placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <br /><br />
-
-        <button type="submit">Login</button>
-
-      </form>
-    </>
-  );
+    return (
+        <>
+            <h1>Driver Login</h1>
+            <form onSubmit={handleSubmit(onSubmit1)}>
+                <label>Phone Number:</label><br />
+                <input type="text" placeholder="Enter phone number" {...register("phone")} />
+                <p>{errors.phone?.message}</p>
+                <label>Password:</label><br />
+                <input type="password" placeholder="Enter password" {...register("password")} />
+                <p>{errors.password?.message}</p>
+                <button type="submit">Login</button>
+            </form>
+        </>
+    );
 }
-
 export default DriverLogin;

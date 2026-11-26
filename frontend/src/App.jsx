@@ -1,26 +1,27 @@
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from "./pages/Home";
+import Home from "./pages/home";
 
-import CustomerRegister from "./pages/CustomerRegister";
-import CustomerLogin from "./pages/CustomerLogin";
-import CustomerDashboard from "./pages/CustomerDashboard";
-import CreateRequests from "./pages/CreateRequests";
-import MyRequests from "./pages/MyRequests";
-import ViewQuotations from "./pages/ViewQuotations";
+import CustomerRegister from "./pages/customerregister";
+import CustomerLogin from "./pages/customerlogin";
+import CustomerDashboard from "./pages/customerdashboard";
+import CreateRequests from "./pages/createrequests";
+import MyRequests from "./pages/myrequests";
+import ViewQuotations from "./pages/viewquotations";
 
-import DriverRegister from "./pages/DriverRegister";
-import DriverLogin from "./pages/DriverLogin";
-import DriverDashboard from "./pages/DriverDashboard";
-import AvailableRequests from "./pages/AvailableRequests";
-import SubmitQuotation from "./pages/SubmitQuotation";
-import MyQuotations from "./pages/MyQuotations";
-import DriverProfile from "./pages/DriverProfile";
+import DriverRegister from "./pages/driverregister";
+import DriverLogin from "./pages/driverlogin";
+import DriverDashboard from "./pages/driverdashboard";
+import AvailableRequests from "./pages/availablerequests";
+import SubmitQuotation from "./pages/submitquotation";
+import MyQuotations from "./pages/myquotations";
+import DriverProfile from "./pages/driverprofile";
+import DriverReviews from "./pages/driverreviews";
 
-import BookingDetails from "./pages/BookingDetails";
-import TripStatus from "./pages/TripStatus";
-import GiveFeedback from "./pages/GiveFeedback";
+import BookingDetails from "./pages/bookingdetails";
+import TripStatus from "./pages/tripstatus";
+import GiveFeedback from "./pages/givefeedback";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
         <Route path="/submitquotation" element={<SubmitQuotation />} />
         <Route path="/myquotations" element={<MyQuotations />} />
         <Route path="/driverprofile" element={<DriverProfile />} />
+        <Route path="/driverreviews" element={<DriverReviews />} />
 
         <Route path="/bookingdetails" element={<BookingDetails />} />
         <Route path="/tripstatus" element={<TripStatus />} />
