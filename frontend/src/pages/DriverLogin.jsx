@@ -12,7 +12,7 @@ function DriverLogin() {
 
     function onSubmit1(data) {
         console.log(data);
-        alert("Driver login successful");
+        alert("Driver login success");
         navigate("/driverdashboard", { state: data });
     }
 
