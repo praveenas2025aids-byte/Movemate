@@ -1,10 +1,15 @@
 
 import { useNavigate, useLocation } from "react-router-dom";
+import API from "../../components/api";
 
 function CustomerDashboard() {
     const navigate = useNavigate();
     const location = useLocation();
-    const formdata = location.state;
+    const registerdata = location.state;
+    const checkendpoint = async () => {
+        const response = await API.get("/api/get");
+        console.log(response.data);
+    };
     return (
         <>
             <div className="min-h-screen bg-slate-100 px-4 py-10">
@@ -12,7 +17,7 @@ function CustomerDashboard() {
                     <div className="bg-white p-8 rounded-2xl shadow-md text-center mb-8">
                         <h1 className="text-3xl font-bold text-blue-900 mb-3">Customer Dashboard</h1>
                         <h3 className="text-xl font-semibold text-slate-700 mb-3">Welcome to MoveMate!</h3>
-                        <p className="text-slate-500">{formdata ? `Phone Number: ${formdata.phone}` : "Welcome, Customer"}</p>
+                        <p className="text-slate-500">{registerdata ? `Phone Number: ${registerdata.phone}` : "Welcome, Customer"}</p>
                     </div>
                     <div className="bg-white p-8 rounded-2xl shadow-md">
                         <h2 className="text-2xl font-bold text-slate-800 text-center mb-8">Choose Your Option</h2>
@@ -22,6 +27,7 @@ function CustomerDashboard() {
                             <button onClick={() => navigate("/viewquotations")} className="bg-blue-600 text-white py-5 px-4 rounded-xl font-semibold hover:bg-blue-700 transition duration-200">View Quotations</button>
                             <button onClick={() => navigate("/")} className="border border-red-500 text-red-600 py-5 px-4 rounded-xl font-semibold hover:bg-red-50 transition duration-200">Logout</button>
                         </div>
+                        {/* <button onClick={checkendpoint} >button</button> */}
                     </div>
                 </div>
             </div>
