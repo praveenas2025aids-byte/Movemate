@@ -11,7 +11,7 @@ function DriverDashboard() {
                 <div className="max-w-4xl mx-auto">
                     <div className="bg-white p-8 rounded-3xl shadow-lg text-center mb-8">
                         <h1 className="text-3xl font-bold text-blue-900 mb-3">Driver Dashboard</h1>
-                        <h3 className="text-xl font-semibold text-slate-700 mb-3">Welcome to MoveMate!</h3>
+                        <h3 className="text-xl font-semibold text-slate-700 mb-3">Welcome to MoveMate</h3>
                         <p className="text-slate-500">Phone Number: {formdata?.phone}</p>
                     </div>
                     <div className="bg-white p-8 rounded-3xl shadow-lg">

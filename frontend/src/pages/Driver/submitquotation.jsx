@@ -11,7 +11,7 @@ function SubmitQuotation() {
     });
     function onSubmit(data) {
         console.log(data);
-        alert("Quotation submitted successfully");
+        alert("Quotation submitted successful");
         navigate("/myquotations", { state: data });
     }
     return (
